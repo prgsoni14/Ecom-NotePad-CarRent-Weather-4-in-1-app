@@ -1,0 +1,44 @@
+
+.intro{
+    border-radius: 10px;
+    border: 2px solid white;
+}
+.intro p{
+    text-align: justify;
+    margin-bottom: 1px;
+    margin-top: 10px;
+}
+.intro input{
+    text-align: center;
+    border-radius: 5px;
+    border: white;
+}
+.intro form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.intro button{
+    border-radius: 5px;
+    border: 1px solid goldenrod;
+}
+.intro button:hover{
+    background-color: palevioletred;
+    color: white;
+}
+
+.introC {
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+}
+.credential{
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

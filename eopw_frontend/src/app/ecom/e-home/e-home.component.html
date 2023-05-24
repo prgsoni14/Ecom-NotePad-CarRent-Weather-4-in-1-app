@@ -1,0 +1,15 @@
+
+<div class="miniNavBar"> 
+    <a *ngIf="userService.isAdmin" routerLink="admin">Admin</a>
+    <a *ngIf="userService.isUser" routerLink="orders">Orders</a>
+    <a *ngIf="userService.isUser" routerLink="cart">Cart<span style=" font-size: 70%; position:relative; bottom: 5px">{{productTransporter.cartSize}}</span></a>
+    <a routerLink="products">Explore</a>
+</div>
+  
+<div class="container-fluid">
+    <router-outlet> </router-outlet>
+</div>
+
+
+
+

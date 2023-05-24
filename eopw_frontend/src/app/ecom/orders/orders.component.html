@@ -1,0 +1,135 @@
+
+<div class="row">
+
+  <div class="col-12 justify-content-center searchBar">
+    <p style="border-bottom: 0px; margin-top:0px;margin-bottom: 2px;">
+      <input required [(ngModel)]="searchKeyword" name="name" type="text">
+      <button id="searchBtn" style="background-color: rgb(34, 168, 229) ;" (click)="search()">Search</button>
+    </p>
+  </div>
+    
+    <div *ngIf="!Orders.length" class="col-12 mt-5 mb-5">
+        <h5>You have no Active Orders</h5>
+    </div>
+
+    <div *ngIf="showSearch && searchedArray.length==0" class="col-12 mt-5 mb-5">
+      <h5>No results for your search</h5>
+    </div>
+
+    <div *ngIf="!showSearch" class="col-12">
+      <div class="row">
+    <div class="col-lg-3 col-md-4 col-sm-6 products mt-3 mb-3" *ngFor="let item of Orders;index as i"> 
+
+          <div class="row product m-2 p-3 d-flex justify-content-center">
+              <div class="col-12 d-flex justify-content-center">
+                <img (click)="expandOrder(i+1)" [src]="item.imageFile.url" alt="Product image">
+              </div>
+
+              <div class="col-12">
+                <h5 class="card-title">{{item.product.name}}</h5>
+                
+                <p *ngIf=" !(i+1-expandVariable)" class="card-text">{{item.product.description}}</p>
+              </div>
+
+              <div class="col-12">
+                <p *ngIf="!(i+1-expandVariable)" class="card-title">OrderID : {{item.id}}</p>
+                <p *ngIf="!(i+1-expandVariable)" class="card-text">Owner : {{item.owner}}</p>
+              </div>
+
+
+              <div class="col-12">
+                <p *ngIf="!(i+1-expandVariable)" class="card-title">Address : {{item.address}}</p>
+                <p *ngIf="!(i+1-expandVariable)" class="card-text">Mobile : {{item.contact}}</p>
+              </div>
+
+              <div class="col-12">
+                <p *ngIf="!(i+1-expandVariable)" class="card-text">Payment Method : {{item.payment}}</p>
+              </div>
+
+              <div class="col-12">
+                <p class="card-title">Ordered On : {{item.orderDate}}</p>
+                <p class="card-title">Status : {{item.status}}</p>
+                
+              </div>
+
+              <div class="col-12">
+                <p *ngIf="!(i+1-expandVariable)" class="card-title">Count : {{item.count}}</p>
+                <p class="card-text">Cost : {{item.cost}}$</p>
+              </div>
+
+              <div class="col-12 d-flex justify-content-center">
+                <button *ngIf="item.status=='shipped'" (click)="receiveOrder(i,item.id)" class="card-link">Receive Package</button>
+              </div>
+
+              <div *ngIf="!(i+1-expandVariable)" class="col-12 d-flex justify-content-center">
+                <button *ngIf="item.status=='ordered'" (click)="cancelOrder(item.id,i)" class="card-link">Request Cancellation</button>
+                <button (click)="toProduct(i)" class="card-link">To Product</button>
+              </div>
+
+            </div>
+        
+        </div>
+      </div>
+    </div>
+    
+
+    <div  *ngIf="showSearch"  class="col-12">
+        <div class="row">
+          <div class="col-lg-3 col-md-4 col-sm-6 products mt-3 mb-3" *ngFor="let item of searchedArray;index as i"> 
+
+      <div class="row product m-2 p-3 d-flex justify-content-center">
+          <div class="col-12 d-flex justify-content-center">
+            <img (click)="expandOrder(i+1)" [src]="item.product.imageFile.url" alt="Product image">
+          </div>
+
+          <div class="col-12">
+            <h5 class="card-title">{{item.product.name}}</h5>
+            
+            <p *ngIf=" !(i+1-expandVariable)" class="card-text">{{item.product.description}}</p>
+          </div>
+
+          <div class="col-12">
+            <p *ngIf="!(i+1-expandVariable)" class="card-title">OrderID : {{item.id}}</p>
+            <p *ngIf="!(i+1-expandVariable)" class="card-text">Owner : {{item.owner}}</p>
+          </div>
+
+
+          <div class="col-12">
+            <p *ngIf="!(i+1-expandVariable)" class="card-title">Address : {{item.address}}</p>
+            <p *ngIf="!(i+1-expandVariable)" class="card-text">Mobile : {{item.contact}}</p>
+          </div>
+
+          <div class="col-12">
+            <p *ngIf="!(i+1-expandVariable)" class="card-text">Payment Method : {{item.payment}}</p>
+          </div>
+
+          <div class="col-12">
+            <p class="card-title">Ordered On : {{item.orderDate}}</p>
+            <p class="card-title">Status : {{item.status}}</p>
+            
+          </div>
+
+          <div class="col-12">
+            <p *ngIf="!(i+1-expandVariable)" class="card-title">Count : {{item.count}}</p>
+            <p class="card-text">Cost : {{item.cost}}$</p>
+          </div>
+
+          <div class="col-12 d-flex justify-content-center">
+            <button *ngIf="item.status=='shipped'" (click)="receiveOrder(i,item.id)" class="card-link">Receive Package</button>
+          </div>
+
+          <div *ngIf="!(i+1-expandVariable)" class="col-12 d-flex justify-content-center">
+            <button *ngIf="item.status=='ordered'" (click)="cancelOrder(item.id,i)" class="card-link">Request Cancellation</button>
+            <button (click)="toProduct(i)" class="card-link">To Product</button>
+          </div>
+
+        </div>
+    
+    </div>
+
+        </div>
+    </div>
+    
+
+    
+</div>

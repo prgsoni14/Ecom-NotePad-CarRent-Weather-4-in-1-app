@@ -1,0 +1,50 @@
+
+<div class="row">
+
+    <div *ngIf="!orderRequests.length" class="col-12 mt-5 mb-5">
+        <h5>Unfortunately, We have No active Order Requests</h5>
+    </div>
+
+    <div class="col-lg-3 col-md-4 col-sm-6 products mt-3 mb-3" *ngFor="let item of orderRequests;index as i"> 
+
+      <div class="row product m-2 p-3 d-flex justify-content-center">
+          <div class="col-12 d-flex justify-content-center">
+            <img  [src]="item.imageFile.url" alt="Product image">
+          </div>
+
+          <div class="col-12">
+            <h5 class="card-title">{{item.product.name}}</h5>
+          </div>
+
+          <div class="col-12">
+            <p class="card-title">OrderID : {{item.id}}</p>
+          </div>
+
+          <div class="col-12">
+            <p class="card-title">Address : {{item.address}}</p>
+            <p class="card-text">Mobile : {{item.contact}}</p>
+          </div>
+
+          <div class="col-12">
+            <p class="card-text">Payment Method : {{item.payment}}</p>
+          </div>
+
+          <div class="col-12">
+            <p class="card-title">Ordered On : {{item.orderDate}}</p>
+            
+          </div>
+
+          <div class="col-12">
+            <p class="card-title">Count : {{item.count}}</p>
+            <p class="card-text">Cost : {{item.cost}}$</p>
+          </div>
+
+          <div class="col-12 d-flex justify-content-center">
+            <button *ngIf="item.status=='ordered'" (click)="ship(i,item.id)" class="card-link">Ship</button>
+            <button *ngIf="item.status!='ordered'" class="card-link statusBtn">{{item.status}}</button>
+            
+          </div>
+        </div>
+    
+    </div>
+</div>

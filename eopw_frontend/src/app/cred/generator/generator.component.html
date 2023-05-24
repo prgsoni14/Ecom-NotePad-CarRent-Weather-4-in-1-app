@@ -1,0 +1,33 @@
+
+
+<div class="container-fluid">
+    <div class="introC row">
+
+    <div class="col-md-7 intro centralizer p-5">
+            
+            <h3>Password Generator</h3>
+        
+            <p>
+                In today's digital age, keeping our online accounts secure has become more important than ever. One of the best ways to do this is by using strong and unique passwords for each of our accounts. However, it can be difficult to come up with complex passwords that are both easy to remember and hard to crack. This tool lets to create a secure password which you can use in the go.
+            </p>
+            
+
+            <form class="mt-4" ngNativeValidate #credForm="ngForm" >
+            
+            <p>Length</p> 
+            <input placeholder="Length" name="length" type="number" [(ngModel)]="length">
+
+            <p>Password</p>
+            <input placeholder="Your Password!!" name="password" type="text" [(ngModel)]="password"> 
+            
+
+            <p><button (click)="generate()">Generate</button><button *ngIf="!timer" (click)="copy()">Copy</button> <button disabled *ngIf="timer">Copied!</button>  </p>
+
+            </form>
+            
+    </div>
+
+</div>
+
+
+</div>

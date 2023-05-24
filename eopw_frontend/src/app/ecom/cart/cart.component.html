@@ -1,0 +1,36 @@
+
+      <div class="row">
+
+          <div *ngIf="!totalCost" class="col-12 d-flex justify-content-center">
+              <h5 class="m-5">You have nothing in Cart</h5>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6 products mt-3 mb-3" *ngFor="let item of cartArray; index as i"> 
+
+            <div class="row product m-2 p-3 d-flex justify-content-center">
+                <div class="col-12 d-flex justify-content-center">
+                  <img [src]="item.imageFile.url" alt="Product image">
+                </div>
+
+                <div class="col-12">
+                  <h5 class="card-title">{{item.name}}</h5>
+                  
+                  <p class="card-text">Price : {{item.price}}$</p>
+                </div>
+
+
+                <div class="col-12 d-flex justify-content-center">
+                  <button (click)="toProduct(i)" class="card-link">Product</button>
+                  <button (click)="deleteFromCart(i)" class="card-link">Remove</button>
+                  
+                </div>
+              </div>
+          </div>
+
+          <div class="col-12 d-flex justify-content-center mt-4">
+                  <button (click)="checkout()" class="card-link checkoutBtn">Checkout</button>
+                  <button class="card-link costGetter">Total Cost :  <input disabled [(ngModel)]="totalCost" type="text"> $</button>
+          </div>
+      </div>
+
+

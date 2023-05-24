@@ -1,0 +1,135 @@
+
+<div class="row justify-content-center adminPage">
+
+
+    <div class="col-12 handler" style=" border-bottom: 1px solid rgba(0, 0, 0, 0.134);">
+        <button class="bottomButton mb-2" routerLink="/ecom/admin/requests" >Orders by Users</button>
+    </div>
+
+    <div class="col-12 searchBar" style="margin-top: 5px;">
+        <p style="border-bottom:0px;">
+            <input [(ngModel)]="searchKeyword" type="text" style="padding: 2px;"> <button (click)="search()" class="bottomButton" >Search</button>
+        </p>
+    </div>
+
+    
+
+
+    <div *ngIf="!showSearch" class="col-12">
+        <div class="row">
+            <div class="col-12 handler">
+
+                    <div class="row" style="width: 100%;">
+                        
+                        <h5 *ngIf="!products.length">Let's Start our Garage</h5>
+                        <div class="col-lg-3 col-md-4 col-sm-6 products mt-3 mb-3" *ngFor="let item of products; index as i"> 
+
+                        <div class="row product m-2 p-3 d-flex justify-content-center">
+                            <div class="col-12 d-flex justify-content-center">
+                                <img [src]="item.imageFile.url" alt="Product image">
+                            </div>
+
+                            <div class="col-12">
+                                <h5 class="card-title">{{item.name}}</h5>
+                                <p class="card-text">{{item.description}}</p>
+                                <p class="card-text">{{item.description2}}</p>
+                                <p class="card-text">{{item.description3}}</p>
+                                <p class="card-text">{{item.category}}</p>
+                            </div>
+
+                            <div class="col-12">
+                                <p class="card-title">Price : {{item.price}}$</p>
+                            </div>
+
+                            <div class="col-12 d-flex justify-content-center">
+                                <button (click)="delete(item.id,item.seller,i)" class="card-link">Remove from Garage</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    
+                    </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div *ngIf="showSearch" class="col-12">
+        <div class="row">
+
+            <div class="col-12 handler">
+
+                <div class="row" style="width: 100%;">
+                    
+                    <h5 *ngIf="!searchedArray.length">No Products Found</h5>
+                    <div class="col-lg-3 col-md-4 col-sm-6 products mt-3 mb-3" *ngFor="let item of searchedArray; index as i"> 
+
+                    <div class="row product m-2 p-3 d-flex justify-content-center">
+                        <div class="col-12 d-flex justify-content-center">
+                            <img [src]="item.imageFile.url" alt="Product image">
+                        </div>
+
+                        <div class="col-12">
+                            <h5 class="card-title">{{item.name}}</h5>
+                            <p class="card-text">{{item.description}}</p>
+                            <p class="card-text">{{item.description2}}</p>
+                            <p class="card-text">{{item.description3}}</p>
+                            <p class="card-text">{{item.category}}</p>
+                        </div>
+
+                        <div class="col-12">
+                            <p class="card-title">Price : {{item.price}}$</p>
+                        </div>
+
+                        <div class="col-12 d-flex justify-content-center">
+                            <button (click)="delete(item.id,item.seller,i)" class="card-link">Remove from Garage</button>
+                        </div>
+                    </div>
+
+                </div>
+                
+                
+                </div>
+        </div>
+
+        </div>
+    </div>
+
+    
+    <div  class="col-12 handler">
+        <button *ngIf="!addVariable" (click)="showAdder()">Add More to Garage</button>
+
+        <form class="handler" *ngIf="addVariable" ngNativeValidate #ProductForm="ngForm" (ngSubmit)="addProduct(ProductForm.value)">
+            <label>Name</label>  <input required ngModel name="name" type="text">
+            <label>Description</label>  <input required ngModel name="description" type="text">
+            <label>Description2</label>  <input required ngModel name="description2" type="text">
+            <label>Description3</label>  <input required ngModel name="description3" type="text">
+            <label>Category</label> 
+            
+            <select name="category" required [(ngModel)]="categoryVariable" >
+                  <option value="Smartphones">Smartphones</option>
+                  <option value="Laptops">Laptops</option>
+                  <option value="Shoes">Shoes</option>
+                  <option value="Cloths">Cloths</option>
+                  <option value="Others">Others</option>
+            </select>
+           
+            <label>Price</label>  <input required ngModel name="price" type="number">
+            <label>Images</label> <input style="width: 63%;" type="file" multiple required (change)="onImages($event)">
+            
+            <div class="row">
+                <div class="col-12">
+                    <button type="submit">Add product</button>
+                    <button *ngIf="addVariable" (click)="showAdder()">Cancel</button>
+                </div>   
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+
+
+

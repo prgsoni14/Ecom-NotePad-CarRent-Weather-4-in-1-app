@@ -1,0 +1,87 @@
+
+<div class="row" >
+
+      <div style="flex-wrap: wrap;" class="col-12 d-flex justify-content-center categoryBtn">
+              <button (click)="getByCategory('All')">All Products</button>
+              <button (click)="getByCategory('Smartphones')">Smartphones</button>
+              <button (click)="getByCategory('Laptops')">Laptops</button>
+              <button (click)="getByCategory('Shoes')">Shoes</button>
+              <button (click)="getByCategory('Cloths')">Cloths</button>
+            </div>
+        <div class="col-12 justify-content-center searchBar">
+          <p style="border-bottom: 0px; margin-top:0px;margin-bottom: 2px;">
+            <input required [(ngModel)]="searchKeyword" name="name" type="text">
+            <button id="searchBtn" style="background-color: rgb(34, 168, 229) ;" (click)="search()">Search</button>
+          </p>
+        </div>
+
+        <div *ngIf="showSearch && searchedArray.length==0" class="col-12 mt-5 mb-5">
+          <h5>No results for your search</h5>
+        </div>
+
+        <div *ngIf="!showSearch" class="col-12">
+            <div class="row">
+                      <div class="col-lg-3 col-md-4 col-sm-6 products mt-3 mb-3" *ngFor="let item of products;index as i"> 
+          <div  class="row product m-2 p-3 d-flex justify-content-center">
+              <div class="col-12 d-flex justify-content-center">
+                <img (click)="toProduct(i)" [src]="item.imageFile.url" alt="Product image">
+              </div>
+
+              <div class="col-12">
+                <h5 class="card-title">{{item.name}}</h5>
+                <p class="card-text">{{item.category}}</p>
+                <p class="card-text">{{item.description}}</p>
+              </div>
+
+              <div class="col-12">
+                <p class="card-title">Price : {{item.price}}$</p>
+                <p class="card-text">Seller : {{item.seller}}</p>
+              </div>
+
+              <div class="col-12 d-flex justify-content-center">
+                <button *ngIf="userService.isUser" (click)="toProduct(i)" class="card-link">Buy</button>
+                <button *ngIf="userService.isUser" (click)="addToCart(i)" class="card-link">Add to cart</button>
+              </div> 
+            </div>
+        </div>
+            </div>
+        </div>
+              
+        
+        <div  *ngIf="showSearch"  class="col-12">
+          <div class="row">
+              <div class="col-lg-3 col-md-4 col-sm-6 products mt-3 mb-3" *ngFor="let item of searchedArray;index as i"> 
+          <div class="row product m-2 p-3 d-flex justify-content-center">
+              <div class="col-12 d-flex justify-content-center">
+                <img (click)="toProduct(i)" [src]="item.imageFile.url" alt="Product image">
+              </div>
+
+              <div class="col-12">
+                <h5 class="card-title">{{item.name}}</h5>
+                <p class="card-text">{{item.category}}</p>
+                <p class="card-text">{{item.description}}</p>
+              </div>
+
+              <div class="col-12">
+                <p class="card-title">Price : {{item.price}}$</p>
+                <p class="card-text">Seller : {{item.seller}}</p>
+              </div>
+
+              <div class="col-12 d-flex justify-content-center">
+                <button *ngIf="userService.isUser" (click)="toProduct(i)" class="card-link">Buy</button>
+                <button *ngIf="userService.isUser" (click)="addToCart(i)" class="card-link">Add to cart</button>
+
+              </div>
+
+               
+            </div>
+        
+        </div>
+
+          </div>
+        </div>
+
+        
+        
+</div>
+

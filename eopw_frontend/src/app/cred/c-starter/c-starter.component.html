@@ -1,0 +1,20 @@
+
+<div class="container-fluid">
+    <div class="row justify-content-center introC">
+
+        <div class="col-md-6 p-5 intro mt-4">
+            <h1>Credential Manager</h1>
+                <p>Welcome to our versatile notepad website, the perfect tool for all your note-taking needs! Our user-friendly platform allows you to create and save notes with ease, whether you're jotting down ideas, making a to-do list, or taking important meeting notes.
+
+                In addition to our notepad feature, we also offer a convenient password generator tool, enabling you to quickly and easily create secure passwords for your online accounts. Our password generator uses the latest technology to create strong, unique passwords that are difficult to guess, ensuring that your accounts are always secure.
+
+                Our website is accessible from any device, anywhere, anytime, making it a reliable and convenient tool for all your note-taking and password management needs.
+                </p>
+
+                
+                <button *ngIf="!userService.isLoggedin" routerLink="/user/login">Login</button>
+        </div>
+
+    </div>
+</div>
+

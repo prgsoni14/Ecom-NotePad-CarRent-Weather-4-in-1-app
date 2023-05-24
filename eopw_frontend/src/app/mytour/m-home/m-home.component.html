@@ -1,0 +1,10 @@
+<div class="miniNavBar" > 
+    <a *ngIf="userService.isUser" routerLink="bookings">Bookings</a>
+    <a *ngIf="userService.isUser" routerLink="booknow">Booknow</a>
+</div>
+
+<div class="container-fluid introCC">
+    <router-outlet> </router-outlet>
+</div>
+
+

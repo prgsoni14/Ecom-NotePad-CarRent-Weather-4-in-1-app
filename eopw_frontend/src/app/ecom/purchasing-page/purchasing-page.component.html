@@ -1,0 +1,63 @@
+
+<div class="row">
+
+
+<div  class="col-12 handler">
+    <div *ngIf="!productTransporter.fromCart.length" class="row d-flex justify-content-center">
+        <div class="col-md-8 products mt-3 mb-3"> 
+            
+          <div class="row product m-2 p-3" *ngFor="let item of items">
+              <div class="col-12 d-flex justify-content-center">
+                <img [src]="item.imageFile.url" alt="Product image">
+              </div>
+
+              <div class="col-12">
+                <h5 class="card-title">{{item.name}}</h5>
+              </div>
+
+              <div class="col-12">
+                <p class="card-title">Price : {{item.price}}$</p>
+              </div>     
+            </div>
+
+        </div>
+    </div>
+        
+        <form class="handler mt-2" ngNativeValidate #PurchaseForm="ngForm" (ngSubmit)="buy(PurchaseForm.value)">
+            <label>Owner</label>  <input required ngModel name="owner" type="text">
+            <label>Mobile</label>  <input required ngModel name="contact" type="number">
+            <label>Count</label>  <input required ngModel name="count" type="number">
+            <label>Address</label>  <input required ngModel name="address" type="text">
+            
+
+            <label class="mt-3">Payment Method</label>
+            <div style="text-align: center; display: flex; justify-content: space-between;">
+                <span>
+                    <input required type="radio" ngModel name="payment" value="COD"> <label for="">COD</label>
+                </span>    
+
+                <span>
+                    <input required type="radio" ngModel name="payment" value="UPI"> <label for="">UPI</label>
+                </span>
+                 
+                <span>
+                    <input required type="radio" ngModel name="payment" value="CreditCard"> <label for="
+                ">Credit Card</label>
+                </span>
+
+                <span>
+                    <input required type="radio" ngModel name="payment" value="DebitCard"> <label for="
+                ">Debit Card</label>
+                </span>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <button type="submit">Confirm Purchase</button>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+
+</div>

@@ -1,0 +1,52 @@
+
+<div class="container-fluid">
+<div class="row introC justify-content-center">
+    <div class="col-md-7 p-5 intro mb-5">
+
+        <h3>NotePad</h3>
+
+        <p>In today's fast-paced digital world, staying organized and efficient is essential. One of the most useful tools for achieving this is the humble notepad. Whether you prefer the traditional pen and paper approach or the convenience of a digital version, a notepad is an indispensable tool for jotting down notes, making to-do lists, brainstorming ideas, and keeping track of important information. With its simplicity, flexibility, and ease of use, a notepad is the ultimate productivity booster for anyone looking to streamline their daily routine and stay on top of their game. So why not add a notepad to your toolkit today and start unleashing your full potential?
+        </p>
+
+
+        <form ngNativeValidate #credForm="ngForm" (ngSubmit)="submit(credForm.value)" >
+            <p>Title</p>
+            <input required ngModel width="100%" type="text" name="title">
+
+            <p>Content</p>
+            <input required ngModel type="text" name="content">
+
+            <p><button type="submit">Submit</button></p>
+        </form>
+
+        <h5 class="mt-5">Your Notes</h5>
+        <p *ngIf="!items.length">You don't have any notes yet...</p>
+
+        <div class="row col-12 p-2 credential" *ngFor="let item of items; index as i">
+            <div class="col-1"> 
+                {{i}}
+            </div>
+
+            <div class="col-2">
+                {{item.title}}
+            </div>
+
+            <div class="col-8">
+                {{item.content}}
+            </div>
+
+            <div class="col-1">
+                <button (click)="delete(item.id,i)">delete</button>
+            </div>                        
+        </div>
+       
+
+
+    </div>
+</div>
+
+
+
+</div>
+
+

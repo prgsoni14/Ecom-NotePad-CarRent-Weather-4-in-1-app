@@ -1,0 +1,23 @@
+
+.introC{
+    background: rgb(238,174,202);
+    border-top: 2px solid white;
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+.intro p{
+    text-align: justify;
+}
+.intro button{
+    width: 20%;
+    background-color: rgb(66, 142, 242);
+    color: wheat;
+    font-weight: 500;
+    border-radius: 5px;
+    border: 2px solid white;
+}
+.intro button:hover{
+    background-color:  rgb(240, 151, 180);
+}
+.intro{
+    min-height: 60vh;
+}
